@@ -73,7 +73,7 @@ const SignIn = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="mb-5 text-4xl">Connexion</h1>
-      <div className=" w-2/5 rounded-2xl bg-quaternary p-6">
+      <div className="rounded-2xl bg-quaternary p-6 md:w-2/5">
         <form className=" flex h-full flex-col justify-around">
           <div className="mb-5 text-center">
             {notification.message.length > 0 && (
@@ -115,18 +115,18 @@ const SignIn = () => {
               majuscule, un chiffre et un symbole.
             </span>
           </div>
-          <div className="flex justify-around">
+          <div className="flex flex-col justify-around gap-5 md:flex-row">
             <button
               type="submit"
               onClick={handleSignIn}
-              className="hover:text-slate-950 mx-auto w-2/5 rounded bg-primary px-3 py-1 text-xl text-white transition-all duration-300 hover:bg-primary/70"
+              className="hover:text-slate-950 mx-auto rounded bg-primary px-3 py-1 text-xl text-white transition-all duration-300 hover:bg-primary/70 md:w-2/5"
             >
               Se connecter
             </button>
             <button
               type="submit"
               onClick={handleSignUp}
-              className="hover:text-slate-950 mx-auto hidden w-2/5 rounded bg-primary px-3 py-1 text-xl text-white transition-all duration-300 hover:bg-primary/70"
+              className="hover:text-slate-950 mx-auto hidden rounded bg-primary px-3 py-1 text-xl text-white transition-all duration-300 hover:bg-primary/70 md:w-2/5"
             >
               S'inscrire
             </button>
