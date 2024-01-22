@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply min-h-screen bg-primary text-sm text-white sm:text-base lg:text-lg;
+  }
+  section {
+    @apply flex scroll-mt-[50px] md:py-6;
+  }
+  #profileImage {
+    @apply translate-x-[900px] animate-trans-right rounded-bl-[50px] rounded-br-[150px] rounded-tl-[150px]
+    rounded-tr-[50px] object-cover opacity-50 drop-shadow-xl md:rounded-br-[200px] md:rounded-tl-[200px];
+  }
+  #skills img {
+    @apply max-w-[50px] object-cover lg:max-w-full;
+  }
+  h2 {
+    @apply relative mb-6 text-3xl font-light after:absolute after:-bottom-1 after:left-1/2 after:h-[1px] after:w-full after:-translate-x-1/2 after:bg-quaternary lg:text-4xl lg:font-semibold;
+  }
+  p {
+    @apply mb-8 text-center;
+  }
+  em {
+    @apply font-semibold;
+  }
+}
