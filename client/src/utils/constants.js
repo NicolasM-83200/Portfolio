@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3200";
+const API_URL = "https://portfolio-manigand-nicolas.onrender.com";
 
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/api/auth/signup`,
