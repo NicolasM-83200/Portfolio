@@ -2,8 +2,8 @@ const Project = require("../models/project.model");
 
 exports.createProject = async (req, res) => {
   try {
-    // const projectObject = JSON.parse(req.body.project);
-    const projectObject = req.body;
+    const projectObject = JSON.parse(req.body.project);
+    // const projectObject = req.body;
     delete projectObject._id;
     delete projectObject.userId;
     const project = new Project({
@@ -19,7 +19,7 @@ exports.createProject = async (req, res) => {
   } catch (error) {
     console.log("Error :", error);
     console.log(req.body.project);
-    res.status(400).json({ error });
+    res.status(400).json({ error: "Une erreur est survenue dans le processus de création..." });
   }
 };
 
@@ -29,7 +29,7 @@ exports.getAllProjects = async (req, res) => {
     res.status(200).json(projects);
   } catch (error) {
     console.log("Error :", error);
-    res.status(400).json({ error });
+    res.status(400).json({ error: "Une erreur est survenue dans le processus de récupération..." });
   }
 };
 
@@ -39,7 +39,7 @@ exports.getOneProject = async (req, res) => {
     res.status(200).json(project);
   } catch (error) {
     console.log("Error :", error);
-    res.status(404).json({ error });
+    res.status(404).json({ error: "Projet non trouvé !" });
   }
 };
 
@@ -65,7 +65,7 @@ exports.modifyProject = async (req, res) => {
     res.status(200).json({ message: "Projet modifié !", projectObject });
   } catch (error) {
     console.log("Error :", error);
-    res.status(400).json({ error });
+    res.status(400).json({ error: "Une erreur est survenue dans le processus de modification..." });
   }
 };
 
@@ -75,6 +75,6 @@ exports.deleteProject = async (req, res) => {
     res.status(200).json({ message: "Projet supprimé !" });
   } catch (error) {
     console.log("Error :", error);
-    res.status(400).json({ error });
+    res.status(400).json({ error: "Une erreur est survenue dans le processus de suppression..." });
   }
 };
