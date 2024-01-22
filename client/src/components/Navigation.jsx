@@ -32,7 +32,6 @@ const Navigation = () => {
           // Mettez à jour l'état avec l'identifiant ou l'index de la section actuelle
           setActiveSection(section.id);
         }
-        // console.log(section.id, rect.top, rect.bottom, window.innerHeight);
       });
     };
 
@@ -91,7 +90,7 @@ const Navigation = () => {
         </ul>
       </nav>
       <div className="fixed right-2 top-2" onClick={toggleHamburger}>
-        <Hamburger />
+        <Hamburger isOpen={hamburgerOpen} />
       </div>
     </>
   );

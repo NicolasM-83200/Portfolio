@@ -32,7 +32,6 @@ const Modal = () => {
   }, []);
 
   const project = projects.find((project) => project._id === id);
-  console.log(project);
 
   return (
     <div

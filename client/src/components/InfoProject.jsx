@@ -7,7 +7,6 @@ const InfoProject = () => {
   const { token } = useAuth();
 
   const params = useParams();
-  console.log(params.id);
 
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
