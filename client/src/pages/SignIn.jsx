@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_ROUTES } from "../utils/constants";
 import { useAuth } from "../provider/authProvider";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -18,13 +19,12 @@ const SignIn = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:3200/api/auth/login",
+        url: `${API_ROUTES.SIGN_IN}`,
         data: {
           email,
           password,
         },
       });
-      console.log(response.data);
       if (!response?.data?.token) {
         setNotification({ error: true, message: "Une erreur est survenue" });
         console.log("Something went wrong during sign in", response);
@@ -44,7 +44,7 @@ const SignIn = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:3200/api/auth/signup",
+        url: `${API_ROUTES.SIGN_UP}`,
         data: {
           email,
           password,
@@ -73,7 +73,7 @@ const SignIn = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="mb-5 text-4xl">Connexion</h1>
-      <div className="rounded-2xl bg-quaternary p-6 md:w-2/5">
+      <div className="w-[90vw] rounded-2xl bg-quaternary p-6 md:w-2/5">
         <form className=" flex h-full flex-col justify-around">
           <div className="mb-5 text-center">
             {notification.message.length > 0 && (

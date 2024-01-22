@@ -7,7 +7,7 @@ const AddProject = () => {
   const [created, setCreated] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div className=" my-5 flex min-h-screen flex-col items-center justify-center">
       <BackArrow />
       {!created ? (
         <>
