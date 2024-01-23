@@ -19,6 +19,10 @@ export default {
         "link-active": {
           to: { width: "100%" },
         },
+        "rotate-link": {
+          "0%": { transform: "rotate(0deg) scale(1)" },
+          "100%": { transform: "rotate(360deg) scale(1.5)" },
+        },
         scale: {
           "50%": { transform: "translate(-50%, 50%) scale(0.8)" },
           "100%": { transform: "translate(-50%, 50%) scale(1)" },
@@ -29,6 +33,7 @@ export default {
         "trans-left": "trans-left 1s ease-in-out forwards",
         "link-active": "link-active 0.3s ease-in-out forwards",
         scale: "scale 10s ease-in-out infinite",
+        "rotate-link": "rotate-link 0.5s ease-in-out forwards",
       },
       gradientColorStopPositions: {
         25: "25%",
