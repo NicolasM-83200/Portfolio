@@ -51,7 +51,7 @@ export async function updateProject(data, id) {
     projectUrl: data.projectUrl,
     technologies: data.technologies,
   };
-  console.log(data.file[0]);
+
   if (data.file[0]) {
     newData = new FormData();
     newData.append("project", JSON.stringify(project));
