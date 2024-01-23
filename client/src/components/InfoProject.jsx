@@ -81,7 +81,7 @@ const InfoProject = () => {
 
           <div className="w-full text-black">
             <h3 className="text-2xl text-primary">Description:</h3>
-            <p className="mb-4 line-clamp-5 overflow-y-auto p-0 text-left">
+            <p className="mb-4 line-clamp-5 overflow-y-auto p-0 text-left md:line-clamp-3 md:overflow-y-auto">
               {project.description}
             </p>
             <div className="relative grid grid-cols-2 before:absolute before:-top-2 before:left-1/2 before:h-[1px] before:w-[90%] before:-translate-x-1/2  before:bg-primary">
