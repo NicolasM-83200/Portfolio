@@ -6,9 +6,9 @@ import Hamburger from "./Hamburger";
 const Navigation = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  const [activeSection, setActiveSection] = useState("intro");
-
   const { token, setToken } = useAuth();
+
+  const [activeSection, setActiveSection] = useState("intro");
 
   const disconnect = () => {
     localStorage.removeItem("userId");
@@ -28,8 +28,13 @@ const Navigation = () => {
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
 
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+        if (rect.top >= 50 && rect.top <= 150) {
           // Mettez à jour l'état avec l'identifiant ou l'index de la section actuelle
+          setActiveSection(section.id);
+        } else if (
+          section.id === "contact" &&
+          rect.bottom <= window.innerHeight
+        ) {
           setActiveSection(section.id);
         }
       });
