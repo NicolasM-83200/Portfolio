@@ -19,7 +19,7 @@ const Contact = () => {
           >
             <FontAwesomeIcon
               icon={faLinkedin}
-              className="hover:animate-rotate-link h-8"
+              className="h-8 hover:animate-rotate-link"
             />
           </a>
           <a
@@ -29,22 +29,10 @@ const Contact = () => {
           >
             <FontAwesomeIcon
               icon={faGithub}
-              className="hover:animate-rotate-link h-8"
+              className="h-8 hover:animate-rotate-link"
             />
           </a>
         </div>
-        <p className="mb-1">
-          Vous pouvez me contacter par mail à l'adresse suivante :{" "}
-          <a
-            href="mailto:manigand.nicolas@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white"
-          >
-            manigand.nicolas@gmail.com
-          </a>
-        </p>
-        <span>OU</span>
         <p className="mb-2">
           Vous pouvez également me contacter via le formulaire ci-dessous :
         </p>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getProject, deleteProject } from "../lib/common";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 
 const InfoProject = () => {
+  const navigate = useNavigate();
   const { token } = useAuth();
 
   const params = useParams();
@@ -34,8 +35,8 @@ const InfoProject = () => {
     const check = confirm("Voulez-vous vraiment supprimer ce projet ?");
     if (check) {
       const del = await deleteProject(project.id);
-      // navigate("/");
-      // window.location.reload();
+      navigate("/");
+      window.location.reload();
       if (del) {
         setProject((oldValue) => ({ ...oldValue, delete: true }));
       }
@@ -128,15 +129,15 @@ const InfoProject = () => {
       </>
     ) : null;
 
-  const deletedContent = project?.deleted ? (
+  const deletedContent = project?.delete ? (
     <div className="flex flex-col items-center">
       <h2 className="text-2xl text-primary">Projet supprimé</h2>
-      <Link
+      {/* <Link
         className="rounded-xl bg-secondary px-2 text-quaternary  transition-all hover:bg-quaternary hover:text-secondary"
         to="/"
       >
         Retour à l'accueil
-      </Link>
+      </Link> */}
     </div>
   ) : null;
 
@@ -144,7 +145,7 @@ const InfoProject = () => {
     <div className="flex flex-col items-center">
       {loading ? loadingContent : null}
       {projectContent}
-      {project?.deleted ? deletedContent : null}
+      {project?.delete ? deletedContent : null}
     </div>
   );
 };
