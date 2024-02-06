@@ -12,7 +12,7 @@ import {
 
 const Skills = () => {
   return (
-    <section id="skills" className="flex-col justify-center items-center">
+    <section id="skills" className="flex-col items-center justify-center">
       <h2>Mes compétences</h2>
       <div className="flex w-full justify-around">
         <img src={html} alt="icon html" />
@@ -32,7 +32,7 @@ const Skills = () => {
         <img src={tailwind} alt="icon tailwind" />
       </div>
       <p>
-        Je maîtrise également des frameworks modernes tels que React, qui me
+        Je maîtrise également des bibliothèques modernes tels que React, qui me
         permettent de créer des interfaces utilisateur interactives et
         réactives. Cette compétence m'a permis de concevoir des expériences
         utilisateur fluides et hautement performantes, répondant aux normes les
