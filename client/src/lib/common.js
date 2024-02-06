@@ -117,6 +117,6 @@ export async function getProjects() {
     return projects;
   } catch (err) {
     console.error(err);
-    return [];
+    return null;
   }
 }
