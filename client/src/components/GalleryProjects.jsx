@@ -35,10 +35,10 @@ const GalleryProjects = () => {
     <>
       {loading ? (
         <div className="flex min-h-36 flex-col items-center justify-center">
-          <h1 className="text-4xl text-quaternary">
+          <p className="text-2xl md:text-4xl text-quaternary">
             Chargement en cours
             <span className="ml-7 inline-block">{loader}</span>{" "}
-          </h1>
+          </p>
         </div>
       ) : (
         <div className="my-5 grid grid-cols-1 items-center gap-6 md:grid-cols-2 xl:grid-cols-3">
