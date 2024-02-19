@@ -1,4 +1,5 @@
-const API_URL = "https://portfolio-manigand-nicolas.onrender.com";
+// const API_URL = "https://portfolio-manigand-nicolas.onrender.com";
+const API_URL = "https://unusual-clam-suspenders.cyclic.app";
 
 export const API_ROUTES = {
   SIGN_UP: `${API_URL}/api/auth/signup`,
