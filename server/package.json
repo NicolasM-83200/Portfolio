@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "npm i",
+    "build": "ncc build server.js -o dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -26,5 +26,8 @@
     "nodemon": "^3.0.3",
     "password-validator": "^5.3.0",
     "sharp": "^0.33.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
   }
 }
