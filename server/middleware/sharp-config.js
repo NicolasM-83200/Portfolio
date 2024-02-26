@@ -1,15 +1,15 @@
-const sharp = require("sharp");
-const multer = require("multer");
+const sharp = require('sharp');
+const multer = require('multer');
 
 const storage = multer.memoryStorage();
 // fait appel à la fonction memoryStorage() de multer qui permet de stocker les fichiers dans la mémoire
-const upload = multer({ storage }).single("image");
+const upload = multer({ storage }).single('image');
 
 // Middleware pour compresser les images
 const compressImage = async (req, res, next) => {
   if (!req.file) return next();
   // On récupère le nom de l'image
-  const name = req.file.originalname.split(" ").join("_").split(".")[0];
+  const name = req.file.originalname.split(' ').join('_').split('.')[0];
   // On ajoute un timestamp pour rendre le nom unique
   const timestamp = Date.now();
   //  On crée le nom du fichier
