@@ -1,6 +1,5 @@
 const sharp = require('sharp');
 const multer = require('multer');
-const multerS3 = require('multer-s3');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
 const s3 = new S3Client();
@@ -37,11 +36,9 @@ const compressImage = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({
-        error: "Erreur lors de la compression de l'image et de l'envoi sur S3",
-      });
+    res.status(500).json({
+      error: "Erreur lors de la compression de l'image et de l'envoi sur S3",
+    });
   }
 };
 
