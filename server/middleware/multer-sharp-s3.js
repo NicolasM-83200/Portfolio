@@ -1,25 +1,40 @@
+const sharp = require('sharp');
 const multer = require('multer');
-const s3storage = require('multer-sharp-s3');
-const aws = require('aws-sdk');
+const AWS = require('aws-sdk');
 
-// aws.config.update({
-//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-//   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-//   region: process.env.AWS_REGION,
-// });
-
-const s3 = new aws.S3();
-
-const storage = s3storage({
-  s3,
-  Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
-  resize: {
-    width: 800,
-    height: 400,
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(
+      null,
+      'https://s3.amazonaws.com/cyclic-unusual-clam-suspenders-eu-west-1/'
+    );
   },
-  toFormat: 'webp',
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
 
-const upload = multer({ storage: storage }).single('image');
+// Middleware pour compresser les images
+const compressImage = async (req, res, next) => {
+  if (!req.file) return next();
+  // On récupère le nom de l'image
+  const name = req.file.originalname.split(' ').join('_').split('.')[0];
+  // On ajoute un timestamp pour rendre le nom unique
+  const timestamp = Date.now();
+  //  On crée le nom du fichier
+  const filename = `${name}_${timestamp}.webp`;
+  // On crée le chemin du fichier
+  const path = `https://s3.amazonaws.com/cyclic-unusual-clam-suspenders-eu-west-1/${filename}`;
 
-exports.upload = upload;
+  // On compresse l'image
+  await sharp(req.file.buffer)
+    .resize(800, 400)
+    .webp({ lossless: true })
+    .toFile(path);
+
+  // On ajoute le nom du fichier à la requête
+  req.file.filename = filename;
+  next();
+};
+
+module.exports = { upload, compressImage };
