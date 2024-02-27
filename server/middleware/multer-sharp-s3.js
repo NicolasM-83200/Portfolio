@@ -2,18 +2,8 @@ const sharp = require('sharp');
 const multer = require('multer');
 const AWS = require('aws-sdk');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(
-      null,
-      'https://s3.amazonaws.com/cyclic-unusual-clam-suspenders-eu-west-1/'
-    );
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-
+const storage = multer.memoryStorage();
+// fait appel à la fonction memoryStorage() de multer qui permet de stocker les fichiers dans la mémoire
 const upload = multer({ storage }).single('image');
 
 // Middleware pour compresser les images
