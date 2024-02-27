@@ -32,6 +32,8 @@ const compressImage = async (req, res, next) => {
 
     await s3.send(new PutObjectCommand(uploadParams));
 
+    // On ajoute le nom du fichier à la requête
+    req.file.filename = filename;
     next();
   } catch (error) {
     console.log(error);
