@@ -14,6 +14,8 @@ const storage = multer.diskStorage({
   },
 });
 
+const upload = multer({ storage }).single('image');
+
 // Middleware pour compresser les images
 const compressImage = async (req, res, next) => {
   if (!req.file) return next();
