@@ -28,7 +28,6 @@ const compressImage = async (req, res, next) => {
       Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
       Key: filename,
       Body: optimizedImage,
-      ACL: 'public-read',
     };
 
     await s3.send(new PutObjectCommand(uploadParams));
