@@ -26,7 +26,7 @@ const compressImage = async (req, res, next) => {
     // On envoie l'image compressée sur S3
     const uploadParams = {
       Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
-      Key: filename,
+      Key: 'test',
       Body: optimizedImage,
     };
 
