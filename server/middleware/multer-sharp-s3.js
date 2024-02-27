@@ -1,10 +1,11 @@
 const sharp = require('sharp');
 const multer = require('multer');
-const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
-const storage = multer.memoryStorage();
-// fait appel à la fonction memoryStorage() de multer qui permet de stocker les fichiers dans la mémoire
-const upload = multer({ storage }).single('image');
+const s3 = new S3Client();
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Middleware pour compresser les images
 const compressImage = async (req, res, next) => {
@@ -15,18 +16,33 @@ const compressImage = async (req, res, next) => {
   const timestamp = Date.now();
   //  On crée le nom du fichier
   const filename = `${name}_${timestamp}.webp`;
-  // On crée le chemin du fichier
-  const path = `https://s3.amazonaws.com/cyclic-unusual-clam-suspenders-eu-west-1/${filename}`;
 
-  // On compresse l'image
-  await sharp(req.file.buffer)
-    .resize(800, 400)
-    .webp({ lossless: true })
-    .toFile(path);
+  try {
+    // On compresse l'image
+    const optimizedImage = await sharp(req.file.buffer)
+      .resize(800, 400)
+      .webp({ lossless: true })
+      .toBuffer();
 
-  // On ajoute le nom du fichier à la requête
-  req.file.filename = filename;
-  next();
+    // On envoie l'image compressée sur S3
+    const uploadParams = {
+      Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
+      Key: filename,
+      Body: optimizedImage,
+      ACL: 'public-read',
+    };
+
+    await s3.send(new PutObjectCommand(uploadParams));
+
+    next();
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({
+        error: "Erreur lors de la compression de l'image et de l'envoi sur S3",
+      });
+  }
 };
 
 module.exports = { upload, compressImage };
