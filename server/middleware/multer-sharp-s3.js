@@ -4,7 +4,7 @@ const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
 const s3 = new S3Client();
 
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ storage: multer.memoryStorage() }).single('image');
 
 // Middleware pour compresser les images
 const compressImage = async (req, res, next) => {
