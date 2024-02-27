@@ -16,6 +16,8 @@ exports.createProject = async (req, res) => {
     });
     await project.save();
     console.log('Project :', project);
+    console.log('bucketName: ', process.env.AWS_BUCKET_NAME);
+    console.log('fileName: ', req.file.filename);
     res.status(201).json({ message: 'Projet créé !', project });
   } catch (error) {
     console.log('Error :', error);
