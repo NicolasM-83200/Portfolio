@@ -13,7 +13,6 @@ const s3 = new aws.S3();
 const storage = s3storage({
   s3,
   Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
-  ACL: 'public-read',
   resize: {
     width: 800,
     height: 400,
