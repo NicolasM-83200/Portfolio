@@ -9,9 +9,10 @@ exports.createProject = async (req, res) => {
     const project = new Project({
       ...projectObject,
       userId: req.auth.userId,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${
-        req.file.filename
-      }`,
+      // imageUrl: `${req.protocol}://${req.get('host')}/images/${
+      //   req.file.filename
+      // }`,
+      imageUrl: `${req.protocol}://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${req.file.filename}`,
     });
     await project.save();
     console.log('Project :', project);
@@ -19,11 +20,9 @@ exports.createProject = async (req, res) => {
   } catch (error) {
     console.log('Error :', error);
     console.log(req.body.project);
-    res
-      .status(400)
-      .json({
-        error: 'Une erreur est survenue dans le processus de création...',
-      });
+    res.status(400).json({
+      error: 'Une erreur est survenue dans le processus de création...',
+    });
   }
 };
 
@@ -33,11 +32,9 @@ exports.getAllProjects = async (req, res) => {
     res.status(200).json(projects);
   } catch (error) {
     console.log('Error :', error);
-    res
-      .status(400)
-      .json({
-        error: 'Une erreur est survenue dans le processus de récupération...',
-      });
+    res.status(400).json({
+      error: 'Une erreur est survenue dans le processus de récupération...',
+    });
   }
 };
 
@@ -73,11 +70,9 @@ exports.modifyProject = async (req, res) => {
     res.status(200).json({ message: 'Projet modifié !', projectObject });
   } catch (error) {
     console.log('Error :', error);
-    res
-      .status(400)
-      .json({
-        error: 'Une erreur est survenue dans le processus de modification...',
-      });
+    res.status(400).json({
+      error: 'Une erreur est survenue dans le processus de modification...',
+    });
   }
 };
 
@@ -87,10 +82,8 @@ exports.deleteProject = async (req, res) => {
     res.status(200).json({ message: 'Projet supprimé !' });
   } catch (error) {
     console.log('Error :', error);
-    res
-      .status(400)
-      .json({
-        error: 'Une erreur est survenue dans le processus de suppression...',
-      });
+    res.status(400).json({
+      error: 'Une erreur est survenue dans le processus de suppression...',
+    });
   }
 };
