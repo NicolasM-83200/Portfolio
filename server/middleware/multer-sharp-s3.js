@@ -32,7 +32,7 @@ const compressImage = async (req, res, next) => {
 
     // On envoie l'image compressée sur S3
     const uploadParams = {
-      Bucket: process.env.AWS_BUCKET_NAME,
+      Bucket: process.env.PORTFOLIO_AWS_BUCKET_NAME,
       Key: filename,
       ACL: 'public-read',
       Body: optimizedImage,
