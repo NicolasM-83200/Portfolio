@@ -43,7 +43,7 @@ const compressImage = async (req, res, next) => {
     const uploadParams = {
       Bucket: 'aws-bucket-portfolio-nicolasm',
       Key: 'test',
-      ACL: 'public-read',
+      // ACL: 'public-read',
       Body: optimizedImage,
     };
 
