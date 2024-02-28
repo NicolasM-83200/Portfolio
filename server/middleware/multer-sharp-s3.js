@@ -3,20 +3,11 @@ const multer = require('multer');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const AWS = require('aws-sdk');
 
-// Configurez les informations d'identification AWS
-// AWS.config.update({
-//   accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
-//   secretAccessKey: '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',
-//   region: 'eu-west-1',
-// });
-
-// const s3 = new S3Client();
-
 const s3 = new S3Client({
-  region: 'eu-west-1',
+  region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
-    secretAccessKey: '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',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
 });
 
@@ -41,9 +32,9 @@ const compressImage = async (req, res, next) => {
 
     // On envoie l'image compressée sur S3
     const uploadParams = {
-      Bucket: 'aws-bucket-portfolio-nicolasm',
+      Bucket: process.env.AWS_BUCKET_NAME,
       Key: filename,
-      // ACL: 'public-read',
+      ACL: 'public-read',
       Body: optimizedImage,
     };
 
