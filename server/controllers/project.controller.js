@@ -12,7 +12,7 @@ exports.createProject = async (req, res) => {
       // imageUrl: `${req.protocol}://${req.get('host')}/images/${
       //   req.file.filename
       // }`,
-      imageUrl: `https://${process.env.PORTFOLIO_AWS_BUCKET_NAME}.s3.${process.env.PORTFOLIO_AWS_REGION}.amazonaws.com/${req.file.filename}`,
+      imageUrl: `https://${process.env.PORTFOLIO_AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${req.file.filename}`,
     });
     await project.save();
     console.log('Project :', project);
