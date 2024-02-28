@@ -4,13 +4,21 @@ const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const AWS = require('aws-sdk');
 
 // Configurez les informations d'identification AWS
-AWS.config.update({
-  accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
-  secretAccessKey: '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',
-  region: 'eu-west-1',
-});
+// AWS.config.update({
+//   accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
+//   secretAccessKey: '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',
+//   region: 'eu-west-1',
+// });
 
-const s3 = new S3Client();
+// const s3 = new S3Client();
+
+const s3 = new S3Client({
+  region: 'eu-west-1',
+  credentials: {
+    accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
+    secretAccessKey: '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',
+  },
+});
 
 const upload = multer({ storage: multer.memoryStorage() }).single('image');
 
