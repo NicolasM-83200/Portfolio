@@ -1,6 +1,14 @@
 const sharp = require('sharp');
 const multer = require('multer');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const AWS = require('aws-sdk');
+
+// Configurez les informations d'identification AWS
+AWS.config.update({
+  accessKeyId: 'AKIA3FLD2O3BXVTAW7NX',
+  secretAccessKey: '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',
+  region: 'eu-west-1',
+});
 
 const s3 = new S3Client();
 
@@ -25,8 +33,9 @@ const compressImage = async (req, res, next) => {
 
     // On envoie l'image compressée sur S3
     const uploadParams = {
-      Bucket: 'cyclic-unusual-clam-suspenders-eu-west-1',
+      Bucket: 'aws-bucket-portfolio-nicolasm',
       Key: 'test',
+      ACL: 'public-read',
       Body: optimizedImage,
     };
 
