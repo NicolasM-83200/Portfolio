@@ -96,10 +96,12 @@ exports.modifyProject = async (req, res) => {
 exports.deleteProject = async (req, res) => {
   try {
     // on supprime l'image du projet de S3
+    const filename = req.body.imageUrl.split('/').pop();
+    console.log('filename :', filename);
     const data = await s3.send(
       new DeleteObjectCommand({
         Bucket: process.env.PORTFOLIO_AWS_BUCKET_NAME,
-        Key: req.body.imageUrl.split('/').pop(),
+        Key: filename,
       })
     );
     console.log('Image supprimée :', data);
