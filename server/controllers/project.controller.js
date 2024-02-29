@@ -96,7 +96,7 @@ exports.modifyProject = async (req, res) => {
 exports.deleteProject = async (req, res) => {
   try {
     // on supprime l'image du projet de S3
-    const filename = req.body.imageUrl.split('/').pop();
+    /*const filename = req.body.imageUrl.split('/').pop();
     console.log('filename :', filename);
     const data = await s3.send(
       new DeleteObjectCommand({
@@ -104,7 +104,7 @@ exports.deleteProject = async (req, res) => {
         Key: filename,
       })
     );
-    console.log('Image supprimée :', data);
+    console.log('Image supprimée :', data);*/
     // on récupère le projet correspondant à l'id de la requête
     await Project.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'Projet supprimé !' });
