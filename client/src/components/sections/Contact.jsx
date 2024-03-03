@@ -32,6 +32,13 @@ const Contact = () => {
               className="h-8 hover:animate-rotate-link"
             />
           </a>
+          <a
+            href="./src/assets/CV_Manigand_Nicolas.pdf"
+            download="CV_Manigand_Nicolas.pdf"
+            className="mx-auto rounded-3xl border border-quaternary bg-primary px-3 py-1 text-white transition-all duration-300 hover:bg-quaternary hover:text-primary"
+          >
+            Téléchargez mon CV
+          </a>
         </div>
         <p className="mb-2">
           Vous pouvez également me contacter via le formulaire ci-dessous :
