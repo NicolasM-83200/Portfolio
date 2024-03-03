@@ -58,14 +58,16 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`${hamburgerOpen ? "translate-x-0" : "translate-x-[210px]"} absolute right-0 top-[50px] h-screen self-center transition-all duration-500 md:relative md:inset-auto md:h-auto md:translate-x-0`}
+        onClick={toggleHamburger}
+        className={`${hamburgerOpen ? "right-0 w-screen" : "-right-full"} absolute top-[50px] h-screen  self-center transition-all duration-500 md:relative md:inset-auto md:h-auto md:w-auto md:translate-x-0`}
       >
         <ul
-          className={` md:bg-transparent flex h-full flex-col items-center justify-evenly bg-quaternary px-12  text-primary transition-all duration-500  md:flex-row md:bg-secondary md:px-0 md:text-quaternary`}
+          className={` md:bg-transparent flex h-full flex-col items-center justify-evenly bg-quaternary/60 px-12 text-primary  backdrop-blur transition-all duration-500  md:flex-row md:bg-secondary md:px-0 md:text-quaternary`}
         >
           {links.map((link) => (
             <li key={link.name} className="text-lg md:ml-9">
               <a
+                onClick={toggleHamburger}
                 href={link.href}
                 className={
                   `#${activeSection}` === link.href ? `${classLink}` : ""
@@ -94,7 +96,10 @@ const Navigation = () => {
           </li>
         </ul>
       </nav>
-      <div className="fixed right-2 top-2" onClick={toggleHamburger}>
+      <div
+        className="absolute right-2 top-2 z-10 flex items-center justify-center md:hidden"
+        onClick={toggleHamburger}
+      >
         <Hamburger isOpen={hamburgerOpen} />
       </div>
     </>

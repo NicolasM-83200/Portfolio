@@ -1,19 +1,24 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 const Hamburger = ({ isOpen }) => {
   return (
-    <div className="flex h-8 w-8 cursor-pointer flex-col justify-around md:hidden">
+    <div className="relative h-8 w-9">
       <div
-        className={`h-1 w-8 rounded-xl bg-white transition-all duration-300 ${isOpen ? "translate-y-[275%] rotate-45" : "translate-y-0 rotate-0"}`}
+        className={`absolute top-0 h-1 w-full rounded-xl bg-white transition-all duration-300 ${isOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""}`}
       ></div>
       <div
-        className={`h-1 w-8 rounded-xl bg-white transition-all duration-300 ${isOpen ? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}`}
+        className={`absolute top-1/2 h-1 w-full -translate-y-1/2 rounded-xl bg-white transition-all duration-300 ${isOpen ? "translate-x-full opacity-0" : ""}`}
       ></div>
       <div
-        className={`h-1 w-8 rounded-xl bg-white transition-all duration-300 ${isOpen ? "-translate-y-[275%] -rotate-45" : "translate-y-0 rotate-0"}`}
+        className={`absolute bottom-0 h-1 w-full rounded-xl bg-white transition-all duration-300 ${isOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""}`}
       ></div>
     </div>
   );
+};
+
+Hamburger.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default Hamburger;
