@@ -33,7 +33,7 @@ const Contact = () => {
             />
           </a>
           <a
-            href="./src/assets/CV_Manigand_Nicolas.pdf"
+            href="/CV_Manigand_Nicolas.pdf"
             download="CV_Manigand_Nicolas.pdf"
             className="mx-auto rounded-3xl border border-quaternary bg-primary px-3 py-1 text-white transition-all duration-300 hover:bg-quaternary hover:text-primary"
           >
