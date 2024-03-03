@@ -44,6 +44,7 @@ export default {
       secondary: "#253B6E",
       terciary: "#1891AC",
       quaternary: "#D2ECF9",
+      pureWhite: "#ffffff",
       white: "#e2e8f0",
       black: "#0a0a0a",
       gray: "#a3a3a3",
