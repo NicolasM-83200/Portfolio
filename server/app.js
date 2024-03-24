@@ -1,25 +1,12 @@
 // Importation des modules
-require('dotenv').config({ path: './config/.env' });
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
-const startServer = require('./server');
 
 // Importation des routes
 const projectRoute = require('./routes/project.routes');
 const userRoutes = require('./routes/user.routes');
-
-// Connexion à la base de données MongoDB
-mongoose
-  .connect(process.env.URI_MONGODB, { dbName: `${process.env.DB}` })
-  .then(() => {
-    console.log('Connexion à MongoDB réussie !');
-    const port = process.env.PORT || '3000';
-    startServer(port);
-  })
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 // Création de l'application Express
 const app = express();
