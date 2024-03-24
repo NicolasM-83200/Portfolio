@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app');
 
-const startServer = async () => {
+const startServer = async (port) => {
   // Normalise le port d'écoute du serveur
   const normalizePort = (val) => {
     const port = parseInt(val, 10);
@@ -13,8 +13,8 @@ const startServer = async () => {
   };
 
   // Définition du port d'écoute du serveur
-  const port = normalizePort(process.env.PORT || '3000');
-  app.set('port', port);
+  // const port = normalizePort(process.env.PORT || '3000');
+  // app.set('port', port);
 
   // Gestion des erreurs
   const errorHandler = (error) => {
