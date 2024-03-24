@@ -51,8 +51,9 @@ server.on('listening', () => {
 // Connexion à la base de données MongoDB
 mongoose
   .connect(process.env.URI_MONGODB, { dbName: `${process.env.DB}` })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .then(() => {
+    console.log('Connexion à MongoDB réussie !');
+    // Le serveur écoute le port défini
+    server.listen(port);
+  })
   .catch(() => console.log('Connexion à MongoDB échouée !'));
-
-// Le serveur écoute le port défini
-server.listen(port);
